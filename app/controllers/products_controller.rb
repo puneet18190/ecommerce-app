@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
-    @order_item = []#current_order.order_items.new
+    @order_item = current_order.order_items.new
   end
 
   # GET /products/1
@@ -64,7 +64,7 @@ class ProductsController < ApplicationController
     end
   end
  def order_history
-   if current_user.is?(:admin)
+   if current_user.admin?
       @order_history = Order.where("product_id is not null")
     else
       @order_history = current_user.orders

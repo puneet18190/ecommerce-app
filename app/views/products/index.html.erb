@@ -3,14 +3,14 @@
       <% @products.each do | product |%>
         <div class="item  col-xs-4 col-lg-4">
             <div class="thumbnail">
-             <img class="group list-group-image" src="<%#= display_file(product) %>" alt="" />
+             <img class="group list-group-image" src="<%= product.image.url %>" alt="" />
                         <%= product.name.truncate(20) %>
                     <p class="group inner list-group-item-text">
                       <%# if product.document.present? %>
                         <%# if product.document.is_pdf? %>
                         <%#= link_to "Download pdf", product.document.photo.path.split("public")[1]%>
                         <%#else%>
-                        ...
+                        <!-- ... -->
                         <%#end%>
                       <%#end%>
                       </p>

@@ -25,10 +25,8 @@
     <td><%= f.select :category_id ,options_for_select(Category.pluck(:name, :id)), :class=>"btn btn-primary dropdown-toggle" %></td>
   </tr>
   <tr>
-    <%= f.fields_for :document do | doc |%>
-    <td><%= doc.label :photo %></td>
-    <td><%= doc.file_field :photo, :class=>"form-control" %></td>
-    <%end%>
+    <td><%= f.label :image %></td>
+    <td><%= f.file_field :image, :class=>"form-control" %></td>
   </tr>
   <tr>
     <td><%= f.submit %></td>
