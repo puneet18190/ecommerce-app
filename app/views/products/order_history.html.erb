@@ -12,7 +12,7 @@
   <% @order_history.each do | order | %>
     <tr>
       <td><%= order.product.category.name %></td>
-      <td><%= order.product.title %></td>
+      <td><%= order.product.name %></td>
       <td><%= order.product.price %></td>
       <td><%= order.quantity %></td>
       <td><%= order.total%></td>
