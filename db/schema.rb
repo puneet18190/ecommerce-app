@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2019_05_18_201253) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -29,8 +32,8 @@ ActiveRecord::Schema.define(version: 2019_05_18_201253) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "product_id"
+    t.bigint "user_id"
+    t.bigint "product_id"
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -44,7 +47,7 @@ ActiveRecord::Schema.define(version: 2019_05_18_201253) do
     t.text "description"
     t.text "image"
     t.integer "price"
-    t.integer "category_id"
+    t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_products_on_category_id"
@@ -68,4 +71,7 @@ ActiveRecord::Schema.define(version: 2019_05_18_201253) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "orders", "products"
+  add_foreign_key "orders", "users"
+  add_foreign_key "products", "categories"
 end
