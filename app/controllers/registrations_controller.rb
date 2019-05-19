@@ -4,7 +4,8 @@ class RegistrationsController < Devise::RegistrationsController
   	if current_user.id == params[:id]
 	  @user = User.find params[:id]
 	else
-      redirect_to root_url, alert: "Unauthorized"
+      redirect_to root_url
+      flash[:danger] = "Unauthorized"
 	end
   end
 

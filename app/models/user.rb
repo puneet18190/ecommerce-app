@@ -23,9 +23,9 @@ class User < ApplicationRecord
     begin
       phnumber = "+" + country_code + phone_number unless country_code.match("\\+")
       puts "otp: #{otp}"
-      twilio_client.messages.create( to: phnumber, from: ENV['TWILIO_NUMBER'], body: "Your PIN is #{otp}")
+      # twilio_client.messages.create( to: phnumber, from: ENV['TWILIO_NUMBER'], body: "Your PIN is #{otp}")
     rescue Exception => e
-      puts e.messages
+      puts e.message
     end
   end
    

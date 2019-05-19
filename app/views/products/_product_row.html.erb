@@ -1,5 +1,8 @@
-<%= form_for order_item, product_id: product.id, remote: true do |f| %>
-  <h6 class="text-right">Unit Price: <span style="color: green"><%= number_to_currency product.price %></span></h6>
+<h6 class="pull-left">Unit Price: 
+	<span style="color: green"><%= number_to_currency product.price %></span>
+</h6>
+
+<%= form_for order_item, product_id: product.id, remote: true do |f| %>  
   <div class="input-group">
     <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
     <div class="input-group-btn">

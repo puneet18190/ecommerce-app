@@ -14,10 +14,9 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
     if @category.save
       redirect_to categories_path
-      lash[:notice] = "Category added successfully"
+      flash[:success] = 'Category was successfully created.'
     else
-      redirect_to new_category_path
-      flash[:notice] = "Something went wrong"
+      render :new
     end
   end
 

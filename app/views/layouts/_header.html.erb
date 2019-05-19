@@ -6,7 +6,14 @@
 
     <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
-        <li><a data-method="delete" href="/users/sign_out"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        <li>
+          <a href="#">Logged in as <strong><%= current_user.email %></strong></a>
+        </li>
+        <li>
+          <a data-method="delete" href="/users/sign_out">
+            <span class="glyphicon glyphicon-log-out"></span> Logout
+          </a>
+        </li>
       <% else %>
         <li><a href="/users/sign_up"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
         <li><a href="/users/sign_in"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -23,19 +30,16 @@
     </form>
   </div>
 
-  <div id="nav-subnav" class="" >
+  <div id="nav-subnav">
     <div class="tabbable">
-      <ul class="nav nav-tabs">
-        <% if params[:action] == "index"%>
-          <li><a>Sort by category : <%= select_tag :category_id , options_for_select(Category.pluck(:name, :id)), :include_blank => "All", :class => "search_filter"%></a></li>
-          <li><a>Sort by price : <%= select_tag :price , options_for_select([["High to low", 'desc'], ["Low to high", "asc"]]), :include_blank => "select", :class => "search_filter"%></a></li>
-        <%end%>
+      <ul class="nav nav-tabs" style="background-color: #D3D3D3">
+        
         <% if user_signed_in? %>
           <li><a href="/products/order_history">Orders</a></li>
         <%end%>
         <% if user_signed_in? && current_user.admin? %>
           <li><a href="/categories/new">Add Category</a></li>
-          <li><a href="/products/new">Create Product</a></li>
+          <li><a href="/products/new">Add Product</a></li>
         <%end%>
       </ul>
     </div>

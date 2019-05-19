@@ -10,20 +10,23 @@
 
   <body>
     <%= render "layouts/header" %>
-    <% flash.each do |_, message|%>
-      <%= message %>
-    <%end%>
+    
+    <% flash.each do |message_type, message| %>
+      <%= content_tag(:div, message,  class: "alert alert-#{message_type}", role: "alert") %>
+    <% end %>
     <div class="container">
-      <div class="row">
-        <div class="col-xs-6">
-          <h1></h1>
-        </div>
-        <div class="col-xs-6 text-right">
-          <h1 class="cart-text"><%= render 'layouts/cart_text' %></h1>
-        </div>
-      </div>
+      <div class="cart-text"><%= render 'layouts/cart_text' %></div>
+      <%= yield %>
     </div>
-    <%= yield %>
     <%#= render "layouts/footer"%>
   </body>
 </html>
+
+<style type="text/css">
+  .alert-alert {
+    @extend .alert-error
+  }
+  .alert-notice {
+    @extend .alert-success
+  }
+</style>
