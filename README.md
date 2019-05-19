@@ -1,24 +1,33 @@
-# README
+### ECommerce App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Its a Ruby on Rails application based on E-Commerce App.
 
-Things you may want to cover:
 
-* Ruby version
+## Instructions for Local Setup
 
-* System dependencies
+* Clone the Repository
+```
+    git clone https://github.com/puneet18190/ecommerce-app.git
+    cd ecommerce-app
+```
 
-* Configuration
+* Install the dependencies.
+```
+    bundle install
+```
 
-* Database creation
+Copy the .env.example file to .env, and edit it including your credentials.
 
-* Database initialization
 
-* How to run the test suite
+* Create database and run migrations.
+ 
+```
+    bundle exec rake db:setup
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+* Start the server
+```
+    rails s
+```
 
-* Deployment instructions
-
-* ...
+* Admin credentials: admin@gmail.com/12345678
